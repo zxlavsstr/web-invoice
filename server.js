@@ -9,7 +9,9 @@ const { join } = require('path');
 const app = express();
 
 let db;
-const DB_PATH = join(__dirname, 'db.sqlite');
+const LOCAL_DB_PATH = join(__dirname, 'db.sqlite');
+const VERCEL_DB_PATH = '/tmp/web-invoice.sqlite';
+const DB_PATH = process.env.VERCEL ? VERCEL_DB_PATH : LOCAL_DB_PATH;
 
 
 
