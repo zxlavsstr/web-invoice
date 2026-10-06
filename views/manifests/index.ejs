@@ -1,0 +1,5 @@
+<%- include('../partials/header',{title:'Manifest'}) %>
+<div class="page-head"><h1>Manifest</h1><a class="btn primary" href="/manifests/new">+ Manifest</a></div>
+<div class="card"><table><thead><tr><th>No. Manifest</th><th>Tanggal</th><th>Shipper</th><th>Invoice</th><th></th></tr></thead><tbody>
+<% manifests.forEach(m=>{ %><tr><td><strong><%= m.no_manifest %></strong></td><td><%= m.manifest_date %></td><td><%= m.shipper||'-' %></td><td><%= m.invoice_count %></td><td><a class="btn small" href="/manifests/<%= m.id %>">Detail</a></td></tr><% }) %>
+</tbody></table></div><%- include('../partials/footer') %>
