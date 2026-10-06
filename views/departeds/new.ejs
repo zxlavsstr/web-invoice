@@ -1,0 +1,8 @@
+<%- include('../partials/header',{title:'Departed Baru'}) %>
+<h1>Catat Departed</h1>
+<form class="card form" method="post" action="/departeds">
+<label>Manifest<select name="manifest_id" required><option value="">Pilih manifest</option><% manifests.forEach(m=>{ %><option value="<%= m.id %>"><%= m.no_manifest %></option><% }) %></select></label>
+<label>Tanggal<input type="date" name="departed_date" value="<%= new Date().toISOString().slice(0,10) %>" required></label>
+<label>Keterangan<textarea name="keterangan"></textarea></label>
+<button class="btn primary">Simpan</button>
+</form><%- include('../partials/footer') %>
