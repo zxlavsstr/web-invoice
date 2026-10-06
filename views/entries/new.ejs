@@ -1,0 +1,7 @@
+<%- include('../partials/header',{title:'Entry Baru'}) %>
+<div class="page-head"><h1>Entry Manifest + Invoice</h1><a class="btn" href="/entries">Kembali</a></div>
+<form class="card form" method="post" action="/entries">
+<label>Manifest<select name="manifest_id" required><option value="">Pilih manifest</option><% manifests.forEach(m=>{ %><option value="<%= m.id %>"><%= m.no_manifest %></option><% }) %></select></label>
+<label>Invoice<select name="invoice_id" required><option value="">Pilih invoice</option><% invoices.forEach(i=>{ %><option value="<%= i.id %>"><%= i.invoice_no %> - <%= i.customer_name %></option><% }) %></select></label>
+<label>Catatan<textarea name="notes"></textarea></label><button class="btn primary">Simpan Entry</button>
+</form><%- include('../partials/footer') %>
