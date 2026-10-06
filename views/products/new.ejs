@@ -1,0 +1,8 @@
+<%- include('../partials/header', {title: 'Produk Baru'}) %>
+<div class="page-head"><h1>Produk / Jasa Baru</h1><a class="btn" href="/products">Kembali</a></div>
+<form class="card form" method="post" action="/products">
+<label>Nama<input name="name" required></label>
+<label>Deskripsi<textarea name="description"></textarea></label>
+<label>Harga<input name="price" type="number" min="0" step="0.01" value="0"></label>
+<button class="btn primary">Simpan</button></form>
+<%- include('../partials/footer') %>
