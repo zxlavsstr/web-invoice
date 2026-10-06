@@ -1,5 +1,1 @@
-<%- include('../partials/header', {title: 'Pelanggan'}) %>
-<div class="page-head"><h1>Pelanggan</h1><a class="btn primary" href="/customers/new">+ Pelanggan</a></div>
-<div class="card"><table><thead><tr><th>Nama</th><th>Telepon</th><th>Email</th><th>Alamat</th></tr></thead><tbody>
-<% customers.forEach(c => { %><tr><td><strong><%= c.name %></strong></td><td><%= c.phone || '-' %></td><td><%= c.email || '-' %></td><td><%= c.address || '-' %></td></tr><% }) %>
-</tbody></table></div><%- include('../partials/footer') %>
+<%-include('../partials/header',{title:'Pelanggan'})%><div class=head><h1>Pelanggan</h1><a class="btn primary" href="/customers/new">+ Tambah</a></div><section class=card><table><tr><th>Nama</th><th>Telepon</th><th>Email</th></tr><%customers.forEach(c=>{%><tr><td><%=c.name%></td><td><%=c.phone||'-'%></td><td><%=c.email||'-'%></td></tr><%})%></table></section><%-include('../partials/footer')%>

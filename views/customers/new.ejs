@@ -1,8 +1,1 @@
-<%- include('../partials/header', {title: 'Pelanggan Baru'}) %>
-<div class="page-head"><h1>Pelanggan Baru</h1><a class="btn" href="/customers">Kembali</a></div>
-<form class="card form" method="post" action="/customers">
-<label>Nama<input name="name" required></label>
-<label>Alamat<textarea name="address"></textarea></label>
-<div class="grid two"><label>Telepon<input name="phone"></label><label>Email<input type="email" name="email"></label></div>
-<button class="btn primary">Simpan</button></form>
-<%- include('../partials/footer') %>
+<%-include('../partials/header',{title:'Tambah Pelanggan'})%><h1>Tambah Pelanggan</h1><form method=post action=/customers class=card><label>Nama<input name=name required></label><label>Alamat<textarea name=address></textarea></label><label>Telepon<input name=phone></label><label>Email<input name=email type=email></label><button class="btn primary">Simpan</button></form><%-include('../partials/footer')%>

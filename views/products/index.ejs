@@ -1,5 +1,1 @@
-<%- include('../partials/header', {title: 'Produk'}) %>
-<div class="page-head"><h1>Produk / Jasa</h1><a class="btn primary" href="/products/new">+ Produk</a></div>
-<div class="card"><table><thead><tr><th>Nama</th><th>Deskripsi</th><th>Harga</th></tr></thead><tbody>
-<% products.forEach(p => { %><tr><td><strong><%= p.name %></strong></td><td><%= p.description || '-' %></td><td><%= Number(p.price).toLocaleString('id-ID') %></td></tr><% }) %>
-</tbody></table></div><%- include('../partials/footer') %>
+<%-include('../partials/header',{title:'Produk'})%><div class=head><h1>Produk / Jasa</h1><a class="btn primary" href="/products/new">+ Tambah</a></div><section class=card><table><tr><th>Nama</th><th>Deskripsi</th><th>Harga</th></tr><%products.forEach(p=>{%><tr><td><%=p.name%></td><td><%=p.description||'-'%></td><td><%=p.price.toLocaleString('id-ID')%></td></tr><%})%></table></section><%-include('../partials/footer')%>

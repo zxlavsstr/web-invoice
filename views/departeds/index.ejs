@@ -1,7 +1,1 @@
-<%- include('../partials/header',{title:'Departed'}) %>
-<h1>Departed</h1>
-<a class="btn primary" href="/departeds/new">+ Departed</a>
-<div class="card"><table><thead><tr><th>Manifest</th><th>Tanggal</th><th>Keterangan</th></tr></thead><tbody>
-<% departeds.forEach(d=>{ %><tr><td><%= d.no_manifest %></td><td><%= d.departed_date %></td><td><%= d.keterangan || '-' %></td></tr><% }) %>
-</tbody></table></div>
-<%- include('../partials/footer') %>
+<%-include('../partials/header',{title:'Departed'})%><div class=head><h1>Departed</h1><a class="btn primary" href=/departeds/new>+ Tambah</a></div><section class=card><table><tr><th>Manifest</th><th>Tanggal</th><th>Keterangan</th></tr><%departeds.forEach(d=>{%><tr><td><%=d.no_manifest%></td><td><%=d.departed_date%></td><td><%=d.keterangan||'-'%></td></tr><%})%></table></section><%-include('../partials/footer')%>

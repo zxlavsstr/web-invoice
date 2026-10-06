@@ -1,5 +1,1 @@
-<%- include('../partials/header',{title:'Entry Data'}) %>
-<div class="page-head"><div><h1>Entry Data</h1><p class="muted">Relasi no. manifest dengan invoice.</p></div><a class="btn primary" href="/entries/new">+ Entry</a></div>
-<div class="card"><table><thead><tr><th>Manifest</th><th>Invoice</th><th>Customer</th><th>Tanggal</th><th>Catatan</th></tr></thead><tbody>
-<% entries.forEach(x=>{ %><tr><td><%= x.no_manifest %></td><td><strong><%= x.invoice_no %></strong></td><td><%= x.customer_name %></td><td><%= x.invoice_date %></td><td><%= x.notes||'-' %></td></tr><% }) %>
-</tbody></table></div><%- include('../partials/footer') %>
+<%-include('../partials/header',{title:'Entry'})%><div class=head><h1>Entry Data</h1><a class="btn primary" href=/entries/new>+ Tambah</a></div><section class=card><table><tr><th>Manifest</th><th>Invoice</th><th>Tanggal</th><th>Customer</th></tr><%entries.forEach(e=>{%><tr><td><%=e.no_manifest%></td><td><%=e.invoice_no%></td><td><%=e.invoice_date%></td><td><%=e.customer_name%></td></tr><%})%></table></section><%-include('../partials/footer')%>

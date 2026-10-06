@@ -1,17 +1,1 @@
-<%- include('../partials/header', {title: 'Buat Invoice'}) %>
-<div class="page-head"><h1>Buat Invoice</h1><a class="btn" href="/invoices">Kembali</a></div>
-<form class="card form" method="post" action="/invoices">
-<div class="grid two">
-<label>No. Invoice<input name="invoice_no" required placeholder="INV-2026-001"></label>
-<label>Pelanggan<select name="customer_id" required><option value="">Pilih pelanggan</option><% customers.forEach(c => { %><option value="<%= c.id %>"><%= c.name %></option><% }) %></select></label>
-<label>Tanggal<input type="date" name="invoice_date" value="<%= new Date().toISOString().slice(0,10) %>" required></label>
-<label>Jatuh Tempo<input type="date" name="due_date"></label>
-<label>PPN (%)<input type="number" name="tax_rate" value="0" min="0" step="0.01"></label>
-<label>Mata Uang<select name="currency"><option>IDR</option><option>USD</option></select></label>
-</div>
-<label>Catatan<textarea name="notes" rows="3"></textarea></label>
-<label>Items (JSON)<textarea name="items" rows="8" required>[{"description":"Jasa","qty":1,"unit_price":0}]</textarea></label>
-<p class="muted">Format item: description, qty, unit_price. Bisa ditambah beberapa item sebagai array JSON.</p>
-<button class="btn primary">Simpan Invoice</button>
-</form>
-<%- include('../partials/footer') %>
+<%-include('../partials/header',{title:'Buat Invoice'})%><h1>Buat Invoice</h1><form method="post" action="/invoices" class="card"><div class="grid"><label>No Invoice<input name="invoice_no" required></label><label>Pelanggan<select name="customer_id" required><option value="">Pilih</option><%customers.forEach(c=>{%><option value="<%=c.id%>"><%=c.name%></option><%})%></select></label><label>Tanggal<input type="date" name="invoice_date" value="<%=new Date().toISOString().slice(0,10)%>" required></label><label>Jatuh Tempo<input type="date" name="due_date"></label><label>PPN %<input type="number" name="tax_rate" value="0"></label><label>Currency<select name="currency"><option>IDR</option><option>USD</option></select></label></div><label>Catatan<textarea name="notes"></textarea></label><h2>Item</h2><div id="items"></div><button type="button" class="btn" onclick="addItem()">+ Item</button><input type="hidden" name="items" id="json"><p><button class="btn primary">Simpan Invoice</button></p></form><script>const products=<%-JSON.stringify(products)%>,box=document.getElementById('items');function addItem(){let r=document.createElement('div');r.className='item';r.innerHTML='<select class=p><option value="">Manual</option>'+products.map(p=>'<option value="'+p.id+'" data-price="'+p.price+'">'+p.name+'</option>').join('')+'</select><input class=d placeholder="Deskripsi" required><input class=q type=number value=1 min=0><input class=u type=number value=0 min=0><button type=button class=btn onclick="this.parentNode.remove()">×</button>';r.querySelector('.p').onchange=e=>{let o=e.target.selectedOptions[0];if(o.dataset.price)r.querySelector('.u').value=o.dataset.price;if(o.value)r.querySelector('.d').value=o.textContent};box.appendChild(r)}addItem();document.querySelector('form').onsubmit=()=>json.value=JSON.stringify([...box.children].map(r=>({product_id:r.querySelector('.p').value||null,description:r.querySelector('.d').value,qty:r.querySelector('.q').value,unit_price:r.querySelector('.u').value})))</script><%-include('../partials/footer')%>

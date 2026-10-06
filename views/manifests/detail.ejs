@@ -1,5 +1,1 @@
-<%- include('../partials/header',{title:'Detail Manifest'}) %>
-<div class="page-head"><div><h1><%= manifest.no_manifest %></h1><p class="muted"><%= manifest.manifest_date %> · <%= manifest.shipper||'-' %></p></div><a class="btn" href="/entries/new">+ Entry Invoice</a></div>
-<div class="card"><h2>Invoice dalam Manifest</h2><table><thead><tr><th>Invoice</th><th>Tanggal</th><th>Customer ID</th><th>Catatan</th></tr></thead><tbody>
-<% manifestInvoices.forEach(x=>{ %><tr><td><strong><%= x.invoice_no %></strong></td><td><%= x.invoice_date %></td><td><%= x.customer_id %></td><td><%= x.notes||'-' %></td></tr><% }) %>
-</tbody></table></div><%- include('../partials/footer') %>
+<%-include('../partials/header',{title:'Detail Manifest'})%><div class=head><h1>Manifest <%=manifest.no_manifest%></h1><a class="btn primary" href=/entries/new>+ Entry</a></div><section class=card><table><tr><th>Invoice</th><th>Tanggal</th><th>Customer ID</th><th>Catatan</th></tr><%manifestInvoices.forEach(i=>{%><tr><td><%=i.invoice_no%></td><td><%=i.invoice_date%></td><td><%=i.customer_id%></td><td><%=i.notes||'-'%></td></tr><%})%></table></section><%-include('../partials/footer')%>

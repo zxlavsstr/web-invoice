@@ -1,11 +1,1 @@
-<%- include('../partials/header', {title: 'Invoice'}) %>
-<div class="page-head"><div><h1>Invoice</h1><p class="muted">Daftar invoice yang tersimpan.</p></div><a class="btn primary" href="/invoices/new">+ Buat Invoice</a></div>
-<div class="card">
-<table><thead><tr><th>No. Invoice</th><th>Pelanggan</th><th>Tanggal</th><th>Mata Uang</th><th>Aksi</th></tr></thead>
-<tbody>
-<% if (!invoices.length) { %><tr><td colspan="5" class="empty">Belum ada invoice.</td></tr><% } %>
-<% invoices.forEach(i => { %>
-<tr><td><strong><%= i.invoice_no %></strong></td><td><%= i.customer_name %></td><td><%= i.invoice_date %></td><td><%= i.currency %></td><td><a class="btn small" href="/invoices/<%= i.id %>">Detail</a></td></tr>
-<% }) %>
-</tbody></table></div>
-<%- include('../partials/footer') %>
+<%-include('../partials/header',{title:'Invoice'})%><div class="head"><h1>Invoice</h1><a class="btn primary" href="/invoices/new">+ Buat Invoice</a></div><section class="card"><table><tr><th>No Invoice</th><th>Tanggal</th><th>Pelanggan</th><th>Aksi</th></tr><%invoices.forEach(i=>{%><tr><td><%=i.invoice_no%></td><td><%=i.invoice_date%></td><td><%=i.customer_name%></td><td><a class="btn" href="/invoices/<%=i.id%>">Detail</a></td></tr><%})%></table></section><%-include('../partials/footer')%>
