@@ -1,0 +1,4 @@
+<%- include('../partials/header',{title:'Manifest Baru'}) %>
+<div class="page-head"><h1>Manifest Baru</h1><a class="btn" href="/manifests">Kembali</a></div>
+<form class="card form" method="post" action="/manifests"><label>No. Manifest<input name="no_manifest" required></label><label>Tanggal<input type="date" name="manifest_date" value="<%= new Date().toISOString().slice(0,10) %>" required></label><label>Shipper<input name="shipper"></label><label>Catatan<textarea name="notes"></textarea></label><button class="btn primary">Simpan</button></form>
+<%- include('../partials/footer') %>
